@@ -91,7 +91,7 @@
     i.r(t);
     var r = i(7),
         n = new(i.n(r).a)(window.navigator.userAgent, 767);
-    n.mobile() && !n.tablet() && window.location.replace("https://st3ampunk.github.io/stackathon3.0/");
+    n.mobile() && !n.tablet() && window.location.replace("https://stackathon.studymonk.in/mobile");
     var o = i(0);
 
     function a(e, t) {
