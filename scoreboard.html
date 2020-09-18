@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<header>
+		<div> 
+			<h1>WELCOME TO SCOREBOARD</h1>
+		</div>
+	</header>
+    <div class="line">
+        <button class="face">SHAKE ME TO VIEW TOTAL POINTS SCOREBOARD</button>
+        <div id="table"></div>
+        <div class="team-arr">
+         <button class="team1">TEAM1</button>
+        <div id="table1"></div>
+        <button class="team2">TEAM2</button>
+        <div id="table2"></div>
+        <button class="team3">TEAM3</button>
+        <div id="table3"></div>
+        <button class="team4">TEAM4</button>
+        <div id="table4"></div>
+        <button class="team5">TEAM5</button>
+        <div id="table5"></div>
+        <button class="team6">TEAM6</button>
+        <div id="table6"></div>
+        <button class="team7">TEAM7</button>
+        <div id="table7"></div>
+        <button class="team8">TEAM8</button>
+        <div id="table8"></div>
+        <button class="team9">TEAM9</button>
+        <div id="table9"></div>
+        <button class="team10">TEAM10</button>
+        <div id="table10"></div>
+        <button class="team11">TEAM11</button>
+        <div id="table11"></div>
+    </div>
+    </div>
+    <style>
+    	body {
+    text-align: center;
+    background-image: url("smblack.jpeg");
+    background-repeat: repeat-y;
+  background-color: #cccccc;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  }
+
+ .team-arr{
+  	text-align: center;
+  	display: inline-block;
+  }
+
+header{
+	width: 100%;
+	background-color: #171717;
+	padding: 5px;
+	margin-bottom: 1px;
+}
+header h1{
+	color: #ffce00;
+}
+
+ 
+div {
+    display: inline-block;
+    justify-content: space-around;
+    padding: 20px;
+}
+ 
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 25%
+    background-color: #F90E0E;
+}
+   .face:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+}
+}
+ 
+#table {
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: Rambla;
+    text-transform: uppercase;
+    align-content: center;
+}
+ 
+ #table1 #table2 #table3 #table4 #table5 #table6 #table7 #table8 #table9 #table10 #table11{
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: Rambla;
+}
+th, td {
+    
+    padding: 10px;
+}
+
+th{
+	background-color: #ffce00;
+}
+td {
+	background-color: #E6F1F3;
+}
+    </style>
+
+ <script>
+ let btnGet = document.querySelector('button');
+ let btnteam1 = document.querySelector(".team1");
+ let btnteam2 = document.querySelector(".team2");
+ let btnteam3 = document.querySelector(".team3");
+ let btnteam4 = document.querySelector(".team4");
+ let btnteam5 = document.querySelector(".team5");
+ let btnteam6 = document.querySelector(".team6");
+ let btnteam7 = document.querySelector(".team7");
+ let btnteam8 = document.querySelector(".team8");
+ let btnteam9 = document.querySelector(".team9");
+ let btnteam10 = document.querySelector(".team10");
+ let btnteam11 = document.querySelector(".team11");
+let myTable = document.querySelector('#table');
+let myTable1 = document.querySelector('#table1');
+let myTable2 = document.querySelector('#table2');
+let myTable3 = document.querySelector('#table3');
+let myTable4 = document.querySelector('#table4');
+let myTable5 = document.querySelector('#table5');
+let myTable6 = document.querySelector('#table6');
+let myTable7 = document.querySelector('#table7');
+let myTable8 = document.querySelector('#table8');
+let myTable9 = document.querySelector('#table9');
+let myTable10 = document.querySelector('#table10');
+let myTable11 = document.querySelector('#table11');
+ 
+let total_par= [
+    {TEAM_NUMBER:1, NAME: "DONAR FORTUNE", TOTAL_POINTS:0},
+    {TEAM_NUMBER:2, NAME: "INNOVATIVE  TEAMERS", TOTAL_POINTS:0},
+    {TEAM_NUMBER:3, NAME: "AGRO SYSTEM", TOTAL_POINTS:0},
+    {TEAM_NUMBER:4, NAME: "MED CARD", TOTAL_POINTS:0},
+    {TEAM_NUMBER:5, NAME: "TECH WARRIORS", TOTAL_POINTS:0},
+    {TEAM_NUMBER:6, NAME: "FARM AID", TOTAL_POINTS:0},
+    {TEAM_NUMBER:7, NAME: "TECH NINJAS", TOTAL_POINTS:0},
+    {TEAM_NUMBER:8, NAME: "CODERS PLOT", TOTAL_POINTS:0},
+    {TEAM_NUMBER:9, NAME: "NAMMA AREA", TOTAL_POINTS:0},
+    {TEAM_NUMBER:10, NAME: "ECHNO PARKING SYSTEM", TOTAL_POINTS:0},
+    {TEAM_NUMBER:11, NAME: "TAIL_LESS_JERRY!!!", TOTAL_POINTS:0},
+
+
+    ];
+
+let team_par1= [
+    {TEAMNO:1,TEAMNAME:'DONAR FORTUNE', MEMBERS_NAME:'PAMUJULA HARISH',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:1,TEAMNAME:'DONAR FORTUNE', MEMBERS_NAME:'ARAVINDAN K',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:1,TEAM_NAME:'DONAR FORTUNE', MEMBERS_NAME:'DRAVID KIBS A',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:1,TEAMNAME:'DONAR FORTUNE', MEMBERS_NAME:'KIRUTHIKA M',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+
+let team_par2= [
+    {TEAMNO:2, TEAM_NAME:'INNOVATIVE TEAMERS', MEMBERS_NAME:'SARAN RAJ M',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:2,TEAM_NAME:'INNOVATIVE TEAMERS', MEMBERS_NAME:'DARPAN KARUR ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:2,TEAM_NAME:'INNOVATIVE TEAMERS', MEMBERS_NAME:'BRITO ALEX',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:2,TEAM_NAME:'INNOVATIVE TEAMERS', MEMBERS_NAME:'SRI RAM',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:2,TEAM_NAME:'INNOVATIVE TEAMERS', MEMBERS_NAME:'KIRAN ROHIT',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+ let team_par3= [
+    {TEAMNO:3,TEAM_NAME:'AGRO SYSTEM', MEMBERS_NAME:'ANGEL F',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:3,TEAM_NAME:'AGRO SYSTEM', MEMBERS_NAME:'BAIRAVI B',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:3,TEAM_NAME:'AGRO SYSTEM', MEMBERS_NAME:'RAGHAVI S',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:3,TEAM_NAME:'AGRO SYSTEM', MEMBERS_NAME:'DINESH KUMAR',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+let team_par4= [
+    {TEAMNO:4,TEAM_NAME:'MED CARD', MEMBERS_NAME:'RAKSHANA',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:4,TEAM_NAME:'MED CARD', MEMBERS_NAME:'LEELAVATHI ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:4,TEAM_NAME:'MED CARD', MEMBERS_NAME:'RHYTHANA',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:4,TEAM_NAME:'MED CARD', MEMBERS_NAME:'ISHWARYA',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:4,TEAM_NAME:'MED CARD', MEMBERS_NAME:'DIVYA',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par5= [
+    {TEAMNO:5, TEAM_NAME:'TECH WARRIORS', MEMBERS_NAME:'SARAVANA L',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:5, TEAM_NAME:'TECH WARRIORS', MEMBERS_NAME:'HRUTHIKA M ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:5, TEAM_NAME:'TECH WARRIORS', MEMBERS_NAME:'CHANDNI U',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:5, TEAM_NAME:'TECH WARRIORS', MEMBERS_NAME:'LEKHYA S',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:5, TEAM_NAME:'TECH WARRIORS', MEMBERS_NAME:'UTHIKA B',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par6= [
+    {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'NISHANTH C A',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'YASASWII CHEEMAKURTHI',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'RACHAPUDI VENKATA SAI RUKMINI',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'THALLURU VISHNU',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'MALAPATI BHAVYA SAI SREE',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+     {TEAMNO:6, TEAM_NAME:'FARM AID', MEMBERS_NAME:'YAGNAJJULA LIKHITHA',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par7= [
+    {TEAMNO:7, TEAM_NAME:'TECH NINJAS', MEMBERS_NAME:'HEMAMALINI R',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO: 7, TEAM_NAME:'TECH NINJAS', MEMBERS_NAME:'MADHUMITHA S',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:7, TEAM_NAME:'TECH NINJAS', MEMBERS_NAME:'MONISHA ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par8= [
+    {TEAMNO:8, TEAM_NAME:'CODERS PLOT', MEMBERS_NAME:'ASHWIN KUMAR R',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:8,TEAM_NAME:'CODERS PLOT', MEMBERS_NAME:'KEERTHANA B',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:8,TEAM_NAME:'CODERS PLOT', MEMBERS_NAME:'AISHWARYA T',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:8,TEAM_NAME:'CODERS PLOT', MEMBERS_NAME:'ABARNA M',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:8,TEAM_NAME:'CODERS PLOT', MEMBERS_NAME:'MOTHIKHA S',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par9= [
+    {TEAMNO:9, TEAM_NAME:'NAMMA AREA', MEMBERS_NAME:'MYTHILI RAMESH ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:9, TEAM_NAME:'NAMMA AREA', MEMBERS_NAME:'MATHIYAZHAGI B',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:9, TEAM_NAME:'NAMMA AREA', MEMBERS_NAME:'HARIHARASUDHAN SP',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+   {TEAMNO:9, TEAM_NAME:'NAMMA AREA', MEMBERS_NAME:'KAMESHWARAN A',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par10= [
+    {TEAMNO:10, TEAM_NAME:'ECHNO PARKING SYSTEM', MEMBERS_NAME:'KARTHIKEYAN V',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:10, TEAM_NAME:'ECHNMO PARKING SYSTEM', MEMBERS_NAME:'HARSHA VARDHAN PJ',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    ];
+
+    let team_par11= [
+    {TEAMNO:11, TEAM_NAME:'TAIL_LESS_JERRY!!!', MEMBERS_NAME:'NISHANT VIGNESHWARAN',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+    {TEAMNO:11, TEAM_NAME:'TAIL_LESS_JERRY!!!', MEMBERS_NAME:'AISHWARYA R',BLOGGINGCONTEST:0, BUSINESSCANVAS:0, POSTERDESIGN:0, PITCH1:0, GAME:0, MENTORWALKIN:0, SECONDPITCH:0,GAME1:0, TWITTERCONTEST:0, SURVEYCONTEST:0, PPT:0, WEBSITE:0, YOUTUBE:0,},
+];
+
+let headers = ['TEAM_NUMBER','TEAM_NAME','TOTAL_POINTS'];
+
+let header1 = ['TEAMNO','TEAMNAME','NAMES','BLOGGING CONTEST','BUSINESS CANVAS','POSTER DESIGN','60TH PITCH','GAME','MENTOR WALKIN','90TH PITCH','GAME','TWITTER CONTEST','SURVEY REPORT','PPT','WEBSITE/MOBILE APP','YOUTUBE'];
+
+
+
+ 
+btnGet.addEventListener('click', () => {
+    let table = document.createElement('table');
+    let headerRow = document.createElement('tr');
+ 
+    headers.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table.appendChild(headerRow);
+ 
+    total_par.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table.appendChild(row);
+    });
+ 
+    myTable.appendChild(table);
+});
+
+btnteam1.addEventListener('click', () => {
+    let table = document.createElement('table1');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table1.appendChild(headerRow);
+ 
+    team_par1.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table1.appendChild(row);
+    });
+ 
+    myTable1.appendChild(table1);
+});
+
+btnteam2.addEventListener('click', () => {
+    let table = document.createElement('table2');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table2.appendChild(headerRow);
+ 
+    team_par2.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table2.appendChild(row);
+    });
+ 
+    myTable2.appendChild(table2);
+});
+
+btnteam3.addEventListener('click', () => {
+    let table = document.createElement('table3');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table3.appendChild(headerRow);
+ 
+    team_par3.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table3.appendChild(row);
+    });
+ 
+    myTable3.appendChild(table3);
+});
+
+btnteam4.addEventListener('click', () => {
+    let table = document.createElement('table4');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table4.appendChild(headerRow);
+ 
+    team_par4.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table4.appendChild(row);
+    });
+ 
+    myTable4.appendChild(table4);
+});
+
+btnteam5.addEventListener('click', () => {
+    let table = document.createElement('table5');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table5.appendChild(headerRow);
+ 
+    team_par5.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table5.appendChild(row);
+    });
+ 
+    myTable5.appendChild(table5);
+});
+
+btnteam6.addEventListener('click', () => {
+    let table = document.createElement('table6');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table6.appendChild(headerRow);
+ 
+    team_par6.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table6.appendChild(row);
+    });
+ 
+    myTable6.appendChild(table6);
+});
+
+btnteam7.addEventListener('click', () => {
+    let table = document.createElement('table7');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table7.appendChild(headerRow);
+ 
+   team_par7.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table7.appendChild(row);
+    });
+ 
+    myTable7.appendChild(table7);
+});
+
+btnteam8.addEventListener('click', () => {
+    let table = document.createElement('table8');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table8.appendChild(headerRow);
+ 
+    team_par8.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table8.appendChild(row);
+    });
+ 
+    myTable8.appendChild(table8);
+});
+
+btnteam9.addEventListener('click', () => {
+    let table = document.createElement('table9');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table9.appendChild(headerRow);
+ 
+    team_par9.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table9.appendChild(row);
+    });
+ 
+    myTable9.appendChild(table9);
+});
+
+
+btnteam10.addEventListener('click', () => {
+    let table = document.createElement('table10');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table10.appendChild(headerRow);
+ 
+    team_par10.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table10.appendChild(row);
+    });
+ 
+    myTable10.appendChild(table10);
+});
+
+btnteam11.addEventListener('click', () => {
+    let table = document.createElement('table11');
+    let headerRow = document.createElement('tr');
+ 
+    header1.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table11.appendChild(headerRow);
+ 
+    team_par11.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table11.appendChild(row);
+    });
+ 
+    myTable11.appendChild(table11);
+});
+
+
+
+
+
+
+
+  
+</script>    
+</body>
+</html>
